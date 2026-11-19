@@ -8,7 +8,7 @@ suits = {"♠": "s", "♡": "h", "♦": "d", "♧": "c"}
 ranks = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 all_cards = [s + r for s in suits.keys() for r in ranks]
 
-# 役クラス
+#役クラス
 rank_names = {
     1: "ストレートフラッシュ（ロイヤル含む）",
     2: "フォーカード",
