@@ -8,9 +8,10 @@ suits = {"♠": "s", "♡": "h", "♦": "d", "♧": "c"}
 ranks = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
 all_cards = [s + r for s in suits.keys() for r in ranks]
 
-#役クラス
+# 役クラス（0のロイヤルフラッシュを追加）
 rank_names = {
-    1: "ストレートフラッシュ（ロイヤル含む）",
+    0: "ロイヤルフラッシュ",
+    1: "ストレートフラッシュ",
     2: "フォーカード",
     3: "フルハウス",
     4: "フラッシュ",
@@ -28,7 +29,7 @@ total_players = st.selectbox(
     format_func=lambda x: f"{x}人（自分 vs 相手{x-1}人）",
 )
 
-#カード選択
+# カード選択
 my_hand_str = st.multiselect(
     "② 自分の手札を【2枚】選んでください", all_cards, max_selections=2
 )
@@ -38,9 +39,9 @@ board_str = st.multiselect(
     max_selections=5,
 )
 
-#勝率と役の確率計算
+# 勝率と役の確率計算
 if st.button("勝率と役の確率を計算する"):
-    #重複チェック
+    # 重複チェック
     if len(my_hand_str) != 2:
         st.error("自分の手札をちょうど2枚選んでください")
     elif len(set(my_hand_str + board_str)) != len(my_hand_str) + len(board_str):
